@@ -5,17 +5,19 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { SitPage } from '../pages/sit/sit';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import {HttpModule} from '@angular/http'
+import { HttpModule } from '@angular/http'
 import { DataserviceProvider } from '../providers/dataservice/dataservice';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    SitPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { DataserviceProvider } from '../providers/dataservice/dataservice';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    SitPage
   ],
   providers: [
     StatusBar,

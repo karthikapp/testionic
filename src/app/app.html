@@ -1,17 +1,28 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
+    <ion-toolbar style=" text-align: center;max-height: 30%;min-height: 200px;padding-top: 10px;" [color]="currentColor">
+      <img class="uk-border-circle" width="100" height="100" *ngIf="imagePath" [src]="imagePath">
+      <h1 class="uk-article-title" style="font-family: 'Abel', sans-serif;font-size: 20px;color: white;font-weight: bold;">{{fullname}}</h1>
+      <h3 class="uk-article-title" style="font-family: 'Abel', sans-serif;font-size: 17px;color: white;"><a class="ui blue label">{{job | uppercase}}</a></h3>
+      <h3 class="uk-article-title" style="font-family: 'Abel', sans-serif;font-size: 15px;color: white;">{{department}}</h3>
+      <span></span>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
+
+<ion-content style="font-family: 'Abel', sans-serif;font-size: 25px;padding-left: 15px;" >
+    <ul class="uk-nav-default uk-nav-parent-icon" uk-nav style="font-family: 'Abel', sans-serif;font-size: 20px;padding-left: 15px;padding-top: 10px;color: blue;">
+      <li style="padding-top: 2px;padding-bottom: 2px;" (click)="openPage(dashboardpage)" menuClose="left"><a href="#">Dashboard</a></li>
+     <li class="uk-parent" style="padding-top: 2px;padding-bottom: 2px;"><a href="#"> HR Requests</a>
+      <ul class="uk-nav-sub" >
+        <li style="padding-top: 2px;padding-bottom: 2px;font-size: 20px" (click)="openPage(sitpage)" menuClose="left"><a href="#">SIT</a></li>
+        <li style="padding-top: 2px;padding-bottom: 2px;">
+          <a href="#">Sub item</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</ion-content>
 
 </ion-menu>
 

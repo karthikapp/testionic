@@ -1,0 +1,121 @@
+<ion-header>
+	<ion-navbar [color]="currentColor">
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>HR Requests - SIT </ion-title>
+	</ion-navbar>
+	<ion-toolbar no-border-top [color]="currentColor">
+		<ion-segment [(ngModel)]="status">
+			<ion-segment-button value="pending" style="color: white;">
+				Pending
+			</ion-segment-button>
+			<ion-segment-button value="approved" style="color: white;">
+				Approved
+			</ion-segment-button>
+			<ion-segment-button value="saved" style="color: white;">
+				Saved
+			</ion-segment-button>
+		</ion-segment>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content padding style="font-family: 'Abel', sans-serif;background-color: #cfd8dc;">
+	<div [ngSwitch]="status">
+		<ion-list *ngSwitchCase="'pending'">
+			<div style="text-align: center;" *ngIf="!pendingsits">
+				<p> Loading .... </p>
+				<br>
+			<span class="uk-margin-small-right" uk-spinner="ratio: 2" *ngIf="!pendingsits"></span>
+			<br>
+			</div>
+			<div *ngFor="let pending of pendingsits" text-wrap no-lines>
+				<div class="column">
+					<div class="ui raised segment">
+						<a [ngClass]="returnlabelclassname(pending.REQUEST_NAME)" style="font-family: 'Abel', sans-serif;font-size: 12px;">{{returnlabelname(pending.REQUEST_NAME)}}</a>
+						<h4 style="font-family: 'Abel', sans-serif;margin: 0px;margin: 4px; font-weight: 700;">{{pending.REQUEST_NAME}}
+						</h4>
+						<p style="font-size: 10px;font-weight: bold;font-family: 'Abel', sans-serif;margin: 2px;">
+						 <span style="color: #00695c">PENDING WITH : 
+						 </span>
+						  {{pending.PENDING_WITH}}
+						</p>
+						<p style="margin: 2px;font-size: 10px;font-weight: bold;font-family: 'Abel', sans-serif;">
+						 <span style="color: #4527a0"> REQUESTED BY : 
+						 </span>{{pending.REQUESTED_BY}}
+						</p>
+						<p style="margin: 2px;font-family: 'Abel', sans-serif;font-size: 10px;">
+						 <span style="color: #b71c1c;">REQUESTED DATE :
+						 </span>{{pending.REQUESTED_DATE | date:'medium'}}
+						</p>
+					</div>
+				</div>
+				<br>
+			</div>
+		</ion-list>
+
+		<ion-list *ngSwitchCase="'approved'">
+			<div style="text-align: center;" *ngIf="!approvedlist">
+				<p> Loading .... </p>
+				<br>
+			<span class="uk-margin-small-right" uk-spinner="ratio: 2" *ngIf="!approvedlist"></span>
+			<br>
+			</div>
+			<div *ngFor="let approved of approvedlist" text-wrap no-lines>
+				<div class="column">
+					<div class="ui raised segment">
+					<a [ngClass]="returnlabelclassnameapproved(approved.P_TYPE)" style="font-family: 'Abel', sans-serif;font-size: 12px;">{{returnlabelnameapproved(approved.P_TYPE)}}</a>
+					<h4 style="font-family: 'Abel', sans-serif;margin: 0px;margin: 4px; font-weight: 700;">{{approved.REQUEST_TYPE}}
+					</h4>
+					<p style="margin: 2px;font-family: 'Abel', sans-serif;font-size: 10px;">
+						 <span style="color: #b71c1c;">REQUESTED DATE :
+						 </span>{{approved.REQUESTED_DATE | date:'medium'}}
+						</p>
+					</div>
+
+				
+				</div>
+				<br>
+			</div>
+		
+		</ion-list>
+
+		<ion-list *ngSwitchCase="'saved'">
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="assets/img/thumbnail-duckling-1.jpg">
+				</ion-thumbnail>
+				<h2>Daffy</h2>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="assets/img/thumbnail-duckling-2.jpg">
+				</ion-thumbnail>
+				<h2>Huey</h2>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="assets/img/thumbnail-duckling-3.jpg">
+				</ion-thumbnail>
+				<h2>Dewey</h2>
+			</ion-item>
+			<ion-item>
+				<ion-thumbnail item-start>
+					<img src="assets/img/thumbnail-duckling-4.jpg">
+				</ion-thumbnail>
+				<h2>Louie</h2>
+			</ion-item>
+		</ion-list>
+	</div>
+
+</ion-content>
+
+<ion-footer>
+<ion-fab bottom="" right="">
+    <button ion-fab color="primary"> 
+    	<span class="button-inner"><ion-icon name="add" role="img" class="icon icon-md ion-md-add" aria-label="add"></ion-icon></span>
+    </button>
+
+  </ion-fab>
+</ion-footer>
