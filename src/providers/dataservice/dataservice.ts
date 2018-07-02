@@ -100,6 +100,43 @@ import { Injectable } from '@angular/core';
 
     }
 
+    getpendingdetails(requestid:string)
+    {
+      let headers = new Headers(
+      {
+        'Authorization': 'Basic QUVIUk1TOndlbGNvbWU=',
+        'Content-Type' : 'application/json'
+      });
+
+      let options = new RequestOptions({ headers: headers });
+
+      let data = JSON.stringify({"InputParameters": {"P_REQUEST_ID": requestid,"P_TRANSACTION_TYPE_ID": "SSHRMS","P_TYPE": "undefined"}
+      });
+
+      return this.http.post('http://mobiebz.transsyssolutions.com:8009/webservices/rest/XXMBZ_HRREQUESTS_PKG/PENDING_REQ_LIST/',
+        data,options)
+
+    }
+
+
+     createresquest()
+    {
+      let headers = new Headers(
+      {
+        'Authorization': 'Basic QUVIUk1TOndlbGNvbWU=',
+        'Content-Type' : 'application/json'
+      });
+
+      let options = new RequestOptions({ headers: headers });
+
+      let data = JSON.stringify({"InputParameters": {"P_PERSON_ID": 30913}});
+
+      return this.http.post('http://mobiebz.transsyssolutions.com:8009/webservices/rest/XXMBZ_HRREQUESTS_PKG/REQ_TYPES/',
+        data,options)
+
+    }
+
+
 
 
 

@@ -1,0 +1,30 @@
+
+<ion-header>
+	<ion-navbar [color]="currentColor">
+		<ion-title>Pending Details </ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding style="background-color: #cfd8dc;font-family: 'Abel', sans-serif;">
+	<div class="column">
+		<div class="ui raised segment">
+			<a [ngClass]="returnlabelclassname(requesttype)" style="font-family: 'Abel', sans-serif;font-size: 12px;">{{returnlabelname(requesttype)}}</a>
+			<h1 class="uk-heading-bullet">{{requesttype}}</h1>
+			<p style="font-size: 10px;font-weight: bold;font-family: 'Abel', sans-serif;margin: 2px;">
+				<span style="color: #00695c">PENDING WITH : <span style="color: black;"> {{pendingdetails_name | uppercase}} </span></span>
+			</p>
+			<br>
+			<h2 class="ui header">
+				<div class="sub header">DETAILS: </div>
+			</h2>
+			<div class="ui red segment" style="font-size: 10px;font-weight: bold;font-family: 'Abel', sans-serif;margin: 2px;" *ngIf="pendingdetails_list?.length > 0">
+				<div class="ui segments" >
+					<div class="ui segment"  *ngFor="let pending of pendingdetails_list" text-wrap no-lines>
+						<p style="color: #00796B;font-weight: bold;" *ngIf="pending">{{pending?.LABEL}} : </p> <p> {{pending?.VALUE}} </p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</ion-content>

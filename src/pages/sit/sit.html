@@ -32,7 +32,7 @@
 			</div>
 			<div *ngFor="let pending of pendingsits" text-wrap no-lines>
 				<div class="column">
-					<div class="ui raised segment">
+					<div class="ui raised segment" (click)="navigate(pending.REQUEST_ID, pending.REQUEST_NAME)">
 						<a [ngClass]="returnlabelclassname(pending.REQUEST_NAME)" style="font-family: 'Abel', sans-serif;font-size: 12px;">{{returnlabelname(pending.REQUEST_NAME)}}</a>
 						<h4 style="font-family: 'Abel', sans-serif;margin: 0px;margin: 4px; font-weight: 700;">{{pending.REQUEST_NAME}}
 						</h4>
@@ -82,30 +82,7 @@
 		</ion-list>
 
 		<ion-list *ngSwitchCase="'saved'">
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="assets/img/thumbnail-duckling-1.jpg">
-				</ion-thumbnail>
-				<h2>Daffy</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="assets/img/thumbnail-duckling-2.jpg">
-				</ion-thumbnail>
-				<h2>Huey</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="assets/img/thumbnail-duckling-3.jpg">
-				</ion-thumbnail>
-				<h2>Dewey</h2>
-			</ion-item>
-			<ion-item>
-				<ion-thumbnail item-start>
-					<img src="assets/img/thumbnail-duckling-4.jpg">
-				</ion-thumbnail>
-				<h2>Louie</h2>
-			</ion-item>
+		
 		</ion-list>
 	</div>
 
@@ -113,7 +90,7 @@
 
 <ion-footer>
 <ion-fab bottom="" right="">
-    <button ion-fab color="primary"> 
+    <button ion-fab color="primary" (click) = "createrequest()"> 
     	<span class="button-inner"><ion-icon name="add" role="img" class="icon icon-md ion-md-add" aria-label="add"></ion-icon></span>
     </button>
 

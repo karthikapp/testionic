@@ -1,0 +1,17 @@
+<ion-header>
+	<ion-navbar [color]="currentColor">
+		<ion-title>Create Test</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding style="background-color: #cfd8dc;font-family: 'Abel', sans-serif;">
+	<div class="ui segment">
+		<ion-list>
+			<button ion-item *ngFor="let item of request" style="color: teal;">
+				{{ item.REQUEST_TYPE }}
+			<span></span><i class="angle right icon"></i>
+			</button>  
+		</ion-list>
+	</div>
+</ion-content>

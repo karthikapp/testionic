@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { Platform } from 'ionic-angular';
 import { DataserviceProvider } from '../../providers/dataservice/dataservice'
+import { PendingdetailsPage } from '../pendingdetails/pendingdetails'
+import { CreaterequestPage } from '../createrequest/createrequest'
 // import { DomSanitizer } from '@angular/platform-browser';
 /**
  * Generated class for the SitPage page.
@@ -29,15 +31,16 @@ import { DataserviceProvider } from '../../providers/dataservice/dataservice'
  		{
  			const el = val._body
  			this.pendingsits = JSON.parse(el).OutputParameters.SSPA.SSPA_ITEM
-      
+ 			console.log(this.pendingsits)
+
  		})
 
  		this.dataserv.getapprovedhrlist().subscribe((value: any) =>
- 			{
- 				const elem = value._body
- 				this.approvedlist = JSON.parse(elem).OutputParameters.REQUEST_DETAILS.REQUEST_DETAILS_ITEM
- 				console.log(this.approvedlist)
- 			})
+ 		{
+ 			const elem = value._body
+ 			this.approvedlist = JSON.parse(elem).OutputParameters.REQUEST_DETAILS.REQUEST_DETAILS_ITEM
+ 			console.log(this.approvedlist)
+ 		})
 
  	}
 
@@ -89,7 +92,7 @@ import { DataserviceProvider } from '../../providers/dataservice/dataservice'
 
 
 
-returnlabelnameapproved(requestname)
+ 	returnlabelnameapproved(requestname)
  	{
  		const request = requestname
  		var value = ''
@@ -107,7 +110,7 @@ returnlabelnameapproved(requestname)
  		}
  		else if (request == 'POEIT')
  		{
-            value = 'POEIT'
+ 			value = 'POEIT'
  		}
  		return value
  	}
@@ -129,6 +132,26 @@ returnlabelnameapproved(requestname)
  		}
  		return value
  	}
+
+
+ 	navigate(requestid: string, requesttype: string) 
+ 	{
+ 		console.log("requestid",requestid)
+ 		this.navCtrl.push(PendingdetailsPage, 
+ 		{
+ 			REQUEST_ID: requestid,
+ 			request_type : requesttype
+ 		})
+ 	}
+
+ 	createrequest() 
+ 	{
+ 		
+ 		this.navCtrl.push(CreaterequestPage)
+ 	}
+
+
+
 
  	ionViewDidLoad() {
  		console.log('ionViewDidLoad SitPage');
